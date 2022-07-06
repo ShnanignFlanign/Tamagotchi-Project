@@ -29,5 +29,24 @@ class Tamagotchi {
     minusExcitement (someNum) {
         this.excitement -= someNum;
     }
-
 }
+
+//death/loss conditions:
+//   energy goes to zero
+//   excitement goes to zero
+//   hunger goes to 10
+
+//interactions list: 
+// toggle lights (lights off let tamagotchi sleep, increases energy)
+// feed pet (decreases hunger)
+// play w/ pet (increases excitement)
+
+//static things:
+//hunger increases over time
+//excitement decreases over time
+//energy decreases over time (toggling lights off reverses effects)
+// age increases over time (at a slower rate than every other status)
+
+//general notes for conditions:
+// sleep state/animation when lights off
+// restrict ability to feed/play with pet when sleep state active
