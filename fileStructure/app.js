@@ -1,5 +1,31 @@
 console.log("My app.js file is attached.")
+//death/loss conditions:
+//   energy goes to zero
+//   excitement goes to zero
+//   hunger goes to 10
 
+//interactions list: 
+
+// toggle lights (lights off let tamagotchi sleep, increases energy)
+// feed pet (decreases hunger, marginally increases energy)
+// play w/ pet (increases excitement, decreases energy, increases hunger)
+
+// optional/potential interactions:
+// read to pet (increases intellect, decreases excitement)
+// exercise (increases strength, increases hunger, decreases energy)
+
+//static things:
+//hunger increases over time
+//excitement decreases over time
+//energy decreases over time (toggling lights off reverses effects)
+// age increases over time (at a slower rate than every other status)
+//    tamagotchi evolves at age 5 and 10
+
+//general notes for conditions:
+// sleep state/animation when lights off
+// restrict ability to feed/play with/read to pet when sleep state active
+
+//object class declaration
 class Tamagotchi {
     constructor(name){
         this.name = name;
@@ -44,7 +70,7 @@ class Tamagotchi {
         this.strength -= someNum;
     }
 }
-
+// basic callback game functions with methods
 const playWithPet = (pet) => {
     console.log("we're playing")
     pet.plusExcitement(1)
@@ -68,28 +94,22 @@ const exercisePet = (pet) => {
     pet.minusEnergy(2)
 }
 
-//death/loss conditions:
-//   energy goes to zero
-//   excitement goes to zero
-//   hunger goes to 10
+//buttons stored in js vars
+const buttonContainer = document.querySelector('.buttonContainer')
 
-//interactions list: 
+const playButton = document.querySelector('#play');
+const feedButton = document.querySelector('#play');
+const exerciseButton = document.querySelector('#play');
+const readButton = document.querySelector('#play');
+const lightsButton = document.querySelector('#play');
 
-// toggle lights (lights off let tamagotchi sleep, increases energy)
-// feed pet (decreases hunger, marginally increases energy)
-// play w/ pet (increases excitement, decreases energy, increases hunger)
+//tamagotchi stats stored in js vars
+const statList = document.querySelector('.tamagotchiStats')
 
-// optional/potential interactions:
-// read to pet (increases intellect, decreases excitement)
-// exercise (increases strength, increases hunger, decreases energy)
-
-//static things:
-//hunger increases over time
-//excitement decreases over time
-//energy decreases over time (toggling lights off reverses effects)
-// age increases over time (at a slower rate than every other status)
-//    tamagotchi evolves at age 5 and 10
-
-//general notes for conditions:
-// sleep state/animation when lights off
-// restrict ability to feed/play with/read to pet when sleep state active
+const tamaName = document.querySelector('#name')
+const tamaAge = document.querySelector('#age')
+const tamaEnergy = document.querySelector('#energy')
+const tamaHunger = document.querySelector('#hunger')
+const tamaExcitement = document.querySelector('#excitement')
+const tamaIntellect = document.querySelector('#intellect')
+const tamaStrength = document.querySelector('#strength')
