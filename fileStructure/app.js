@@ -77,31 +77,32 @@ const playWithPet = (pet) => {
     pet.plusHunger(1)
     pet.minusEnergy(1)
 }
-
-const readToPet = (pet) => {
-    pet.plusIntellect(1)
-    pet.minusExcitement(1)
-}
-
 const feedPet = (pet) => {
     pet.minusHunger(1)
     pet.plusEnergy(0.5)
 }
-
 const exercisePet = (pet) => {
     pet.plusStrength(1)
     pet.plusHunger(2)
     pet.minusEnergy(2)
 }
+const readToPet = (pet) => {
+    pet.plusIntellect(1)
+    pet.minusExcitement(1)
+}
+//above functions stored in array
+const tamaToPlayerInt = [playWithPet, feedPet, exercisePet, readToPet]
+
+// need to do toggle light function
 
 //buttons stored in js vars
 const buttonContainer = document.querySelector('.buttonContainer')
 
 const playButton = document.querySelector('#play');
-const feedButton = document.querySelector('#play');
-const exerciseButton = document.querySelector('#play');
-const readButton = document.querySelector('#play');
-const lightsButton = document.querySelector('#play');
+const feedButton = document.querySelector('#feed');
+const exerciseButton = document.querySelector('#exercise');
+const readButton = document.querySelector('#read');
+const lightsButton = document.querySelector('#lights');
 
 //tamagotchi stats stored in js vars
 const statList = document.querySelector('.tamagotchiStats')
@@ -113,3 +114,19 @@ const tamaHunger = document.querySelector('#hunger')
 const tamaExcitement = document.querySelector('#excitement')
 const tamaIntellect = document.querySelector('#intellect')
 const tamaStrength = document.querySelector('#strength')
+
+//function that updates HTML to reflect object values
+tamaInfoUpdate = (pet) => {
+    tamaName = "Name: " + pet.name;
+    tamaAge = "Age: " + pet.name;
+    tamaEnergy = "Energy: " + pet.energy;
+    tamaHunger = "Hunger: " + pet.hunger;
+    tamaExcitement = "Excitement: " + pet.excitement;
+    tamaIntellect = "Intellect: " + pet.intellect;
+    tamaStrength = "Strength: " + pet.strength;
+}
+
+// need a function that creates tamagotchi object when player sets a name
+
+//need a function that statically affects tamagotchi stats
+//  maybe that function has a condional that checks if lights are on or off??
