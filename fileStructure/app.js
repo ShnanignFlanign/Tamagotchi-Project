@@ -36,62 +36,46 @@ class Tamagotchi {
         this.intellect = 0;
         this.strength = 0;
     }
-    plusAge (someNum) {
-        this.age += someNum;
+// basic game methods
+    playWithPet () {
+        console.log("we're playing")
+        this.excitement += 1;
+        this.hunger += 1;
+        this.energy -= 1;
+        tamaInfoUpdate(this)
     }
-    plusEnergy (someNum) {
-        this.energy += someNum;
+    feedPet () {
+        this.hunger -= 1;
+        this.energy += 0.5;
+        tamaInfoUpdate(this)
     }
-    minusEnergy (someNum) {
-        this.energy -= someNum;
+    exercisePet () {
+        this.strength += 1;
+        this.hunger += 2;
+        this.energy -= 2;
+        tamaInfoUpdate(this)
     }
-    plusHunger (someNum) {
-        this.hunger += someNum;
+    readToPet () {
+        this.intellect += 1;
+        this.excitement -= 1;
+        tamaInfoUpdate(this)
     }
-    minusHunger (someNum) {
-        this.hunger -= someNum;
-    }
-    plusExcitement (someNum) {
-        this.excitement += someNum;
-    }
-    minusExcitement (someNum) {
-        this.excitement -= someNum;
-    }
-    plusIntellect (someNum) {
-        this.intellect += someNum;
-    }
-    minusIntellect (someNum) {
-        this.intellect -= someNum;
-    }
-    plusStrength (someNum) {
-        this.strength += someNum;
-    }
-    minusStrength (someNum) {
-        this.strength -= someNum;
-    }
+    
 }
-// basic callback game functions with methods
-const playWithPet = (pet) => {
-    console.log("we're playing")
-    pet.plusExcitement(1)
-    pet.plusHunger(1)
-    pet.minusEnergy(1)
+
+//function that updates HTML to reflect object values
+tamaInfoUpdate = (pet) => {
+    tamaName.innerText = "Name: " + pet.name;
+    tamaAge.innerText = "Age: " + pet.name;
+    tamaEnergy.innerText = "Energy: " + pet.energy;
+    tamaHunger.innerText = "Hunger: " + pet.hunger;
+    tamaExcitement.innerText = "Excitement: " + pet.excitement;
+    tamaIntellect.innerText = "Intellect: " + pet.intellect;
+    tamaStrength.innerText = "Strength: " + pet.strength;
 }
-const feedPet = (pet) => {
-    pet.minusHunger(1)
-    pet.plusEnergy(0.5)
-}
-const exercisePet = (pet) => {
-    pet.plusStrength(1)
-    pet.plusHunger(2)
-    pet.minusEnergy(2)
-}
-const readToPet = (pet) => {
-    pet.plusIntellect(1)
-    pet.minusExcitement(1)
-}
+
 //above functions stored in array
-const tamaToPlayerInt = [playWithPet, feedPet, exercisePet, readToPet]
+// const tamaFuncArr = [playWithPet(), feedPet(), exercisePet(), readToPet()];
 
 // need to do toggle light function
 
@@ -115,18 +99,20 @@ const tamaExcitement = document.querySelector('#excitement')
 const tamaIntellect = document.querySelector('#intellect')
 const tamaStrength = document.querySelector('#strength')
 
-//function that updates HTML to reflect object values
-tamaInfoUpdate = (pet) => {
-    tamaName = "Name: " + pet.name;
-    tamaAge = "Age: " + pet.name;
-    tamaEnergy = "Energy: " + pet.energy;
-    tamaHunger = "Hunger: " + pet.hunger;
-    tamaExcitement = "Excitement: " + pet.excitement;
-    tamaIntellect = "Intellect: " + pet.intellect;
-    tamaStrength = "Strength: " + pet.strength;
-}
+
+
 
 // need a function that creates tamagotchi object when player sets a name
 
 //need a function that statically affects tamagotchi stats
 //  maybe that function has a condional that checks if lights are on or off??
+
+//instantiating tamagotchi object upon loading
+let newTama = new Tamagotchi ('');
+tamaInfoUpdate(newTama)
+
+//testing
+playButton.addEventListener('click', () =>{newTama.playWithPet()});
+feedButton.addEventListener('click', () =>{newTama.feedPet()});
+exerciseButton.addEventListener('click', () =>{newTama.exercisePet()});
+readButton.addEventListener('click', () =>{newTama.readToPet()});
