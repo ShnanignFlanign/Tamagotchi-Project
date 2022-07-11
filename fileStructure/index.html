@@ -7,17 +7,19 @@
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
-  <body id="seenPage">
+  <body id="seenPage" data-style="light">
     <nav>
       <div class="buttonContainer">
         <button id="play" data-num="0">Play with Tamagotchi</button>
         <button id="feed" data-num="1">Feed Tamagotchi</button>
         <button id="exercise" data-num="2">Exercise Tamagotchi</button>
         <button id="read" data-num="3">Read to Tamagotchi</button>
+        <button id="lights" data-toggle="on">Toggle Lights</button>
+        <button id="nameChange">Change Name Here:</button>
       </div>
     </nav>
     <main>
-      <button id="lights" data-toggle="on">Toggle Lights</button>
+      
       <div id="tamagotchiContainer"></div>
       <ul class="tamagotchiStats">
         <li id="name">Name: </li>

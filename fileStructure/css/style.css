@@ -1,3 +1,16 @@
 body {
-    background-color:aquamarine;
+    text-align: center;
+}
+body[data-style ='light']{
+    background-color: aquamarine;
+    color: black;
+}
+
+body[data-style ='dark']{
+    background-color: rgb(78, 78, 78);
+    color: white;
+}
+
+li {
+    list-style: none;
 }

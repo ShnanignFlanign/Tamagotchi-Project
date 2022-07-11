@@ -42,23 +42,32 @@ class Tamagotchi {
         this.excitement += 1;
         this.hunger += 1;
         this.energy -= 1;
-        tamaInfoUpdate(this)
+        // tamaInfoUpdate(this);
+        // tamaStatChecker(this);
     }
     feedPet () {
         this.hunger -= 1;
         this.energy += 0.5;
-        tamaInfoUpdate(this)
+        // tamaInfoUpdate(this);
+        // tamaStatChecker(this);
     }
     exercisePet () {
         this.strength += 1;
         this.hunger += 2;
         this.energy -= 2;
-        tamaInfoUpdate(this)
+        // tamaInfoUpdate(this);
+        // tamaStatChecker(this);
     }
     readToPet () {
         this.intellect += 1;
         this.excitement -= 1;
-        tamaInfoUpdate(this)
+        // tamaInfoUpdate(this);
+        // tamaStatChecker(this);
+    }
+    lightsOff () {
+        this.energy += 2;
+        // tamaInfoUpdate(this);
+        // tamaStatChecker(this);
     }
     
 }
@@ -74,10 +83,55 @@ tamaInfoUpdate = (pet) => {
     tamaStrength.innerText = "Strength: " + pet.strength;
 }
 
-//above functions stored in array
-// const tamaFuncArr = [playWithPet(), feedPet(), exercisePet(), readToPet()];
+//checking pet stats
+tamaStatChecker = (pet) => {
+    if(pet.excitemt <= 0 || pet.hunger >= 10 || pet.energy <=0){
+        theBody.remove(theMain)
+        alert("Your pet died! Refresh the page to try again.")
+    }
+}
 
-// need to do toggle light function
+lightChecker = () => {
+    if(lightsButton.dataset.toggle === 'on'){
+        lightsButton.dataset.toggle = 'off';
+        theBody.dataset.style = 'dark';
+        console.log(lightsButton.dataset.toggle)
+        console.log(theBody.dataset.style)
+    }
+    else if(lightsButton.dataset.toggle ==='off'){
+        lightsButton.dataset.toggle = 'on';
+        theBody.dataset.style = 'light';
+        console.log(lightsButton.dataset.toggle)
+        console.log(theBody.dataset.style)
+    }
+}
+
+funcFinder = (e) => {
+    if(e.target !== e.currentTarget){    
+        if(e.target.id === 'play'){
+            newTama.playWithPet()
+        }
+        else if(e.target.id === 'feed'){
+            newTama.feedPet()
+        }
+        else if(e.target.id === 'exercise'){
+            newTama.exercisePet()
+        }
+        else if(e.target.id === 'read'){
+            newTama.readToPet()
+        }
+        else if(e.target.id === 'lights'){
+            newTama.lightsOff()
+            lightChecker()
+        }
+        tamaInfoUpdate(newTama)
+        tamaStatChecker(newTama)}
+}
+//the body element in var
+const theBody = document.querySelector('#seenPage')
+
+//main element
+const theMain = document.querySelector('main')
 
 //buttons stored in js vars
 const buttonContainer = document.querySelector('.buttonContainer')
@@ -111,8 +165,20 @@ const tamaStrength = document.querySelector('#strength')
 let newTama = new Tamagotchi ('');
 tamaInfoUpdate(newTama)
 
-//testing
-playButton.addEventListener('click', () =>{newTama.playWithPet()});
-feedButton.addEventListener('click', () =>{newTama.feedPet()});
-exerciseButton.addEventListener('click', () =>{newTama.exercisePet()});
-readButton.addEventListener('click', () =>{newTama.readToPet()});
+buttonContainer.addEventListener('click', funcFinder)
+
+// lightsButton.addEventListener('click', () =>{
+//     if(lightsButton.dataset.toggle === 'on'){
+//         lightsButton.dataset.toggle = 'off';
+//         theBody.dataset.style = 'dark';
+//         newTama.lightsOff()
+//         console.log(lightsButton.dataset.toggle)
+//         console.log(theBody.dataset.style)
+//     }
+//     else if(lightsButton.dataset.toggle ==='off'){
+//         lightsButton.dataset.toggle = 'on';
+//         theBody.dataset.style = 'light';
+//         console.log(lightsButton.dataset.toggle)
+//         console.log(theBody.dataset.style)
+//     }
+// })
