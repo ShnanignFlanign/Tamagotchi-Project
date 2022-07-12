@@ -69,6 +69,9 @@ class Tamagotchi {
         // tamaInfoUpdate(this);
         // tamaStatChecker(this);
     }
+    ageUp () {
+        this.age += 1;
+    }
     
 }
 
@@ -91,6 +94,7 @@ tamaStatChecker = (pet) => {
     }
 }
 
+//changes styling on page
 lightChecker = () => {
     if(lightsButton.dataset.toggle === 'on'){
         lightsButton.dataset.toggle = 'off';
@@ -105,7 +109,7 @@ lightChecker = () => {
         console.log(theBody.dataset.style)
     }
 }
-
+//chooses correct function on player's click
 funcFinder = (e) => {
     if(e.target !== e.currentTarget){    
         if(e.target.id === 'play'){
@@ -154,31 +158,14 @@ const tamaIntellect = document.querySelector('#intellect')
 const tamaStrength = document.querySelector('#strength')
 
 
-
-
-// need a function that creates tamagotchi object when player sets a name
-
-//need a function that statically affects tamagotchi stats
-//  maybe that function has a condional that checks if lights are on or off??
+//need tick/time passing function
+//need update name function
+// need age increase function
+//need animations for each age and function to pick correct one
+//rules portion (since number stats are different that in OG assignment)
 
 //instantiating tamagotchi object upon loading
 let newTama = new Tamagotchi ('');
 tamaInfoUpdate(newTama)
 
 buttonContainer.addEventListener('click', funcFinder)
-
-// lightsButton.addEventListener('click', () =>{
-//     if(lightsButton.dataset.toggle === 'on'){
-//         lightsButton.dataset.toggle = 'off';
-//         theBody.dataset.style = 'dark';
-//         newTama.lightsOff()
-//         console.log(lightsButton.dataset.toggle)
-//         console.log(theBody.dataset.style)
-//     }
-//     else if(lightsButton.dataset.toggle ==='off'){
-//         lightsButton.dataset.toggle = 'on';
-//         theBody.dataset.style = 'light';
-//         console.log(lightsButton.dataset.toggle)
-//         console.log(theBody.dataset.style)
-//     }
-// })
