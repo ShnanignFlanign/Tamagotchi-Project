@@ -72,13 +72,22 @@ class Tamagotchi {
     ageUp () {
         this.age += 1;
     }
+    gettingBored () {
+        this.excitement -= 1;
+    }
+    gettingHungry () {
+        this.hunger += 1;
+    }
+    gettingSleepy () {
+        this.energy -= 1;
+    }
     
 }
 
 //function that updates HTML to reflect object values
 tamaInfoUpdate = (pet) => {
     tamaName.innerText = "Name: " + pet.name;
-    tamaAge.innerText = "Age: " + pet.name;
+    tamaAge.innerText = "Age: " + pet.age;
     tamaEnergy.innerText = "Energy: " + pet.energy;
     tamaHunger.innerText = "Hunger: " + pet.hunger;
     tamaExcitement.innerText = "Excitement: " + pet.excitement;
@@ -86,11 +95,24 @@ tamaInfoUpdate = (pet) => {
     tamaStrength.innerText = "Strength: " + pet.strength;
 }
 
+
+
 //checking pet stats
 tamaStatChecker = (pet) => {
     if(pet.excitemt <= 0 || pet.hunger >= 10 || pet.energy <=0){
         theBody.remove(theMain)
         alert("Your pet died! Refresh the page to try again.")
+    }
+}
+
+ageChecker = (pet) => {
+    if(pet.age === 5){
+        //change photo in div element
+        console.log('Your tamagotchi just turned 5!')
+    }
+    if(pet.age === 10){
+        //change photo again
+        console.log('Pet is now an adult')
     }
 }
 
@@ -128,8 +150,9 @@ funcFinder = (e) => {
             newTama.lightsOff()
             lightChecker()
         }
-        tamaInfoUpdate(newTama)
-        tamaStatChecker(newTama)}
+        // tamaInfoUpdate(newTama)
+        // tamaStatChecker(newTama)
+    }
 }
 //the body element in var
 const theBody = document.querySelector('#seenPage')
@@ -158,14 +181,34 @@ const tamaIntellect = document.querySelector('#intellect')
 const tamaStrength = document.querySelector('#strength')
 
 
-//need tick/time passing function
-//need update name function
-// need age increase function
-//need animations for each age and function to pick correct one
-//rules portion (since number stats are different that in OG assignment)
+
+//need to assign img's to tama
+//need to animate each action
+//need to tune styling of page
+//add change name functionality
 
 //instantiating tamagotchi object upon loading
 let newTama = new Tamagotchi ('');
-tamaInfoUpdate(newTama)
+// tamaInfoUpdate(newTama)
 
+//refresh/stat check function
+setInterval(() => {
+    tamaInfoUpdate(newTama);
+    tamaStatChecker(newTama);
+    console.log('stat and info ran')
+}, 250)
+
+//tama stat depreciation function
+setInterval(() => {
+    newTama.gettingBored();
+    newTama.gettingHungry();
+    newTama.gettingSleepy();
+    console.log('depreciation executed')
+}, 15000)
+
+//aging function
+setInterval(() => {
+    newTama.ageUp()
+    ageChecker(newTama)
+    console.log('age interval ran')}, 20000)
 buttonContainer.addEventListener('click', funcFinder)
