@@ -1,16 +1,41 @@
 body {
     text-align: center;
+    margin: 30px 50px 0px 50px;
 }
 body[data-style ='light']{
     background-color: aquamarine;
     color: black;
 }
 
+#buttonContainer {
+    display: flex;
+    flex-flow: row-wrap;
+    justify-content: space-around;
+}
+
 body[data-style ='dark']{
-    background-color: rgb(78, 78, 78);
+    background-color: rgb(26, 76, 78);
     color: white;
 }
 
 li {
     list-style: none;
+}
+
+ul {
+    display: flex;
+    flex-flow: row-wrap;
+    justify-content: space-around;
+    padding: 50px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#tamaPic {
+    max-height: 100px;
+    margin: 30px;
 }
